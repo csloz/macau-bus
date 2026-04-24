@@ -234,10 +234,14 @@ def estimate_arrivals_live(stop_id, stops_data, routes_data, live_fetcher):
         svc = routes_data.get(route_id, {})
         avg_freq = svc.get("avg_freq", svc.get("headway", 10))
 
+        is_express = route_id in ["71S", "701X"]
+        route_color = C.ORANGE if is_express else C.BLUE
+
         arrivals[route_id] = {
             "stops": nearest_stops,
             "status": status,
             "direction": "→" if best_dir == 0 else "←",
+            "color": route_color,
             "frequency": int(avg_freq),
             "totalBuses": total_buses,
             "nearestPlate": nearest_plate,
