@@ -322,7 +322,7 @@ Examples:
     parser.add_argument("--to-stop", dest="to_stop", help="Destination stop for distance")
     parser.add_argument("--info", action="store_true", help="Full stop details")
     parser.add_argument("--stops", "-S", action="store_true", help="List all stops with Chinese + English names + coordinates")
-    parser.add_argument("--data-dir", default="/tmp/mini-macau/data/bus_reference")
+    parser.add_argument("--data-dir", default=None, help="Path to cached reference data (default: ./data)")
 
     args = parser.parse_args()
 
@@ -331,7 +331,7 @@ Examples:
     print(f"   Date: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print(f"{'═' * 60}\n")
 
-    data_dir = Path(args.data_dir)
+    data_dir = Path(args.data_dir) if args.data_dir else DEFAULT_DATA_DIR
     dsat_data = load_local_dsat_data(data_dir)
     stops_data = load_local_stops_data(data_dir)
 
