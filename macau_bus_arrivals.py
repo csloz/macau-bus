@@ -535,6 +535,12 @@ Examples:
 
     args = parser.parse_args()
 
+    # Normalize user input to uppercase (data keys are uppercase)
+    args.route = (args.route or "").upper()
+    args.stop = (args.stop or "").upper()
+    args.from_stop = (args.from_stop or "").upper()
+    args.to_stop = (args.to_stop or "").upper()
+
     data_dir = Path(args.data_dir)
 
     if args.route:
