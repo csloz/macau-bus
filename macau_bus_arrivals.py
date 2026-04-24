@@ -31,7 +31,7 @@ HEADERS = {
     "Accept-Language": "zh-HK,zh;q=0.9,en;q=0.8",
 }
 TIMEOUT = 15
-DEFAULT_DATA_DIR = Path("/tmp/mini-macau/data/bus_reference")
+DEFAULT_DATA_DIR = Path(__file__).resolve().parent / "data"
 
 # English/Portuguese stop name cache (SuperMap API)
 EN_NAME_CACHE = {}

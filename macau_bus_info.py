@@ -34,7 +34,7 @@ HEADERS = {
 }
 TIMEOUT = 15
 
-DEFAULT_DATA_DIR = Path("/tmp/mini-macau/data/bus_reference")
+DEFAULT_DATA_DIR = Path(__file__).resolve().parent / "data"
 
 # English stop name cache (process-scope)
 EN_NAME_CACHE = {}
