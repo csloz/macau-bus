@@ -1,6 +1,9 @@
-# 📋 Macau Bus Information Tool
+|# 📋 Macau Bus Tool
 
-A Python script to query Macau bus route information and calculate distances between stops.
+Python scripts to query Macau bus route information, live arrivals, and stop distances.
+
+Main script: `macau_bus_arrivals.py` (unified tool — route info, live arrivals, stop distances)
+Legacy backup: `macau_bus_info.py` (route/stop info only, same functionality)
 
 All scripts are in the `~/macau-bus/` directory.
 
@@ -39,6 +42,105 @@ python ~/macau-bus/macau_bus_distance.py --from-stop M93 --to-stop T394
 ```bash
 python ~/macau-bus/macau_bus_info.py --route 51A --stop T394 --info
 ```
+
+## 🚌 Live Bus Arrivals (`macau_bus_arrivals.py`)
+
+The unified tool — live arrivals, route info, stop distances, and stop lookup.
+
+### Live Arrivals at a Stop
+
+Full screen-style display with colored routes, bus plates, speeds, and frequency info:
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --stop T394
+```
+
+Simple compact output (stop name, active routes, next arrivals):
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --stop T394 --simple
+```
+
+Short flags work too:
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py -s T394 -S
+```
+
+Case-insensitive input (lowercase or uppercase):
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --stop t394
+```
+
+Example output:
+```
+  新城大馬路／威尼斯人 (AV. CIDADE NOVA/ VENETIAN) [16:53]
+  Route 51A→ — 1 stop away  [buses: 6]
+    Nearest: AA6848 @ 45 km/h
+    2nd:     AA7167 (6 stops) @ 18 km/h
+  Route 701X→ — 1 stop away  [buses: 4]
+    Nearest: AA2563 @ 22 km/h
+    2nd:     AA7454 (11 stops) @ 29 km/h
+  Route 72→ — 3 stops away  [buses: 4]
+    Nearest: MZ8269 @ 12 km/h
+    2nd:     MZ8525 (12 stops) @ 11 km/h
+```
+
+### Route Info
+
+Basic route summary (forward/backward stop counts, terminals):
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --route 51A
+```
+
+All stops with Chinese names, English/Portuguese names, and GPS coordinates:
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --route 51A --stops
+```
+
+Highlight your stop location:
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --route 51A --stops --stop T394
+```
+
+### Distance Between Two Stops
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --route 51A --from-stop M93 --to-stop C690
+```
+
+Output:
+```
+  Distance: 6.62 km
+           = 6620 meters
+  Walking: ~79 minutes (5 km/h)
+  Transit: ~53 stops
+```
+
+### Full Flag Reference
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--route` | `-r` | Bus route (e.g. 51A, 71S) |
+| `--stop` | `-s` | Stop ID for live arrivals (e.g. T394, M1) |
+| `--stops` | `-S` | List all stops (Chinese + English + coords) |
+| `--simple` | | Simple output format for live arrivals |
+| `--from-stop` | | Source stop for distance calculation |
+| `--to-stop` | | Destination stop for distance calculation |
+
+### What Each Output Shows
+
+- **Route**: Bus line number (orange for express routes like 71S, 701X)
+- **Positions**: How far the nearest bus is (e.g. "1 stop", "AT STOP")
+- **Buses**: Total active buses on that route for the stop
+- **Direction**: Arrow indicating direction (→ forward, ← backward)
+- **Nearest**: License plate and speed of closest bus
+- **Freq**: Average headway in minutes
+- **Next**: Second closest bus details
 
 ## 🔄 Regenerating Reference Data
 
