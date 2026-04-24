@@ -1,4 +1,4 @@
-|# 📋 Macau Bus Tool
+# 📋 Macau Bus Tool
 
 Python scripts to query Macau bus route information, live arrivals, and stop distances.
 
@@ -141,6 +141,59 @@ Output:
 - **Nearest**: License plate and speed of closest bus
 - **Freq**: Average headway in minutes
 - **Next**: Second closest bus details
+
+## ⚡ Quick Bus Check (`macau_bus_quick.py`)
+
+Ultra-simple output for casual queries. When you just want to know "when's the next bus?" without all the details.
+
+### Basic Usage
+
+Minimal output: stop name, time, routes and stops away:
+
+```bash
+python ~/macau-bus/macau_bus_quick.py --stop T394
+```
+
+Example output:
+```
+新城大馬路／威尼斯人
+AV. CIDADE NOVA/ VENETIAN
+17:06
+Route 51A: 1 stop away
+Route 701X: 5 stops away
+Route 72: 5 stops away
+
+Closest: Route 51A at 1 stop away.
+```
+
+### Filter to One Route
+
+```bash
+python ~/macau-bus/macau_bus_quick.py --stop T394 -r 51A
+```
+
+Output:
+```
+新城大馬路／威尼斯人
+17:06
+Route 51A: 2 stops away
+
+Closest: Route 51A at 2 stops away.
+```
+
+### Flag Reference
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--stop` | | Stop ID (required, e.g. T394, M1) |
+| `-r` | `--route` | Optional: filter to one route |
+
+### When to Use
+
+Use `macau_bus_quick.py` when you want a bare-minimum answer:
+- "Is my bus coming soon?"
+- Quick check without full table or colors
+- Easy to paste into messages or summaries
 
 ## 🔄 Regenerating Reference Data
 
