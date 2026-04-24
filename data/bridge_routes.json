@@ -1,0 +1,25 @@
+{
+  "_comment": "Bus route IDs that travel via 嘉樂庇總督大橋 (Macau-Taipa Bridge / Ponte Governador Nobre de Carvalho). Sourced from user knowledge of actual Macau bus operations. patch_bus_bridges.py rewrites these routes' channel-crossing geometry to use the bridge.",
+  "macau_taipa_bridge": [
+    "11",
+    "21A",
+    "22",
+    "25",
+    "25AX",
+    "25B",
+    "28A",
+    "33",
+    "39",
+    "50",
+    "50B",
+    "52",
+    "71",
+    "73",
+    "102",
+    "H3",
+    "MT1",
+    "MT2",
+    "MT5",
+    "N5"
+  ]
+}

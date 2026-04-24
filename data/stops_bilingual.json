@@ -1,0 +1,102 @@
+{
+  "C689/2": {
+    "stationNameEn": "AL. DA HARMONIA / EDF. LOK KUAN",
+    "latitude": "22.12986",
+    "longitude": "113.56283"
+  },
+  "T434": {
+    "stationNameEn": "AV. AEROPORTO / GRAND LISBOA PALACE",
+    "latitude": "22.144674",
+    "longitude": "113.57572"
+  },
+  "M179": {
+    "stationNameEn": "S. AGOSTINHO",
+    "latitude": "22.19061",
+    "longitude": "113.53889"
+  },
+  "M73/2": {
+    "stationNameEn": "VITORY GARDEN",
+    "latitude": "22.19922",
+    "longitude": "113.548706"
+  },
+  "M140/2": {
+    "stationNameEn": "ALM. SÉRGIO / TRAV. LIDO",
+    "latitude": "22.192314",
+    "longitude": "113.53455"
+  },
+  "T431": {
+    "stationNameEn": "PONTE DE SAI VAN / AV. DO OCEANO",
+    "latitude": "22.16263",
+    "longitude": "113.54169"
+  },
+  "T399": {
+    "stationNameEn": "COTAI LESTE / WYNN PALACE",
+    "latitude": "22.147207",
+    "longitude": "113.56933"
+  },
+  "M8/2": {
+    "stationNameEn": "AV. ARTUR DE TAMAGNINI BARBOSA / EDF. JARDIM CIDADE",
+    "latitude": "22.2128",
+    "longitude": "113.54757"
+  },
+  "M234": {
+    "stationNameEn": "AV. NORDESTE/ EDF. HOI PAN",
+    "latitude": "22.20688",
+    "longitude": "113.55521"
+  },
+  "T325/2": {
+    "stationNameEn": "EDF. JARDIM DE VA POU",
+    "latitude": "22.155533",
+    "longitude": "113.55513"
+  },
+  "T376/2": {
+    "stationNameEn": "EST. DO ISTMO / PARISIAN",
+    "latitude": "22.144346",
+    "longitude": "113.56342"
+  },
+  "T422": {
+    "stationNameEn": "AV. M. FLOR DE LÓTUS / GALAXY-2",
+    "latitude": "22.145212",
+    "longitude": "113.55266"
+  },
+  "C690/1": {
+    "stationNameEn": "AV. VALE DAS BORBOLETAS / TERMINAL",
+    "latitude": "22.12877",
+    "longitude": "113.56215"
+  },
+  "M11": {
+    "stationNameEn": "EST. ARCO/ TEMPLO LIN FUNG",
+    "latitude": "22.210152",
+    "longitude": "113.548294"
+  },
+  "T345/1": {
+    "stationNameEn": "TAIPA FERRY TERMINAL",
+    "latitude": "22.163336",
+    "longitude": "113.576"
+  },
+  "M236": {
+    "stationNameEn": "R.CENTRAL DA AREIA PRETA/CENTRO DE SAÚDE DA AREIA PRETA",
+    "latitude": "22.211748",
+    "longitude": "113.555016"
+  },
+  "M141": {
+    "stationNameEn": "RUA DOS MERCADORES",
+    "latitude": "22.19513",
+    "longitude": "113.53995"
+  },
+  "M203/1": {
+    "stationNameEn": "A-MA TEMPLE",
+    "latitude": "22.187046",
+    "longitude": "113.53108"
+  },
+  "M257": {
+    "stationNameEn": "NAPE / MACAO CULTURAL CENTRE",
+    "latitude": "22.18761",
+    "longitude": "113.55421"
+  },
+  "T376/1": {
+    "stationNameEn": "EST. DO ISTMO / PARISIAN",
+    "latitude": "22.144028",
+    "longitude": "113.56341"
+  }
+}
