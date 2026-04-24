@@ -24,7 +24,7 @@ Exported: 2026-04-23
 - `/ddbus/common/station/capacity` — Station capacity info
 - `/ddbus/common/supermap/point/station?device=web&HUID=XX&keywords=Y&lang=en` — Station keyword search
 
-See `~/macau-bus/MACAU_BUS_README.md` for more details on SuperMap endpoints.
+See `~/macau-bus/README.md` for more details on SuperMap endpoints.
 
 ## DSAT Fetched At
 
@@ -39,7 +39,6 @@ A Python script is available in this directory:
 ```bash
 python3 regenerate_bus_reference.py --dsat-only
 ```
-(Also symlinked/copied to `~/.hermes/regenerate_bus_reference.py` for convenience.)
 
 ### Quick update (DSAT stop sequences only, no extra dependencies)
 ```bash

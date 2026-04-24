@@ -109,7 +109,7 @@ GET /ddbus/common/supermap/point/station?device=web&HUID=XX&keywords=Y&lang=en
 
 ### Example 1: Route 51A Overview
 ```bash
-$ python ~/.hermes/macau_bus_info.py --route 51A
+$ python macau_bus_info.py --route 51A
 ```
 Output:
 - Forward: 21 stops (M93 → C690/1)
@@ -118,7 +118,7 @@ Output:
 
 ### Example 2: Stop Location (T394 on Route 51A)
 ```bash
-$ python ~/.hermes/macau_bus_info.py --route 51A --stop T394
+$ python macau_bus_info.py --route 51A --stop T394
 ```
 Output:
 - Stop T394: 新城大馬路／威尼斯人 (Venetian Macao)
@@ -126,7 +126,7 @@ Output:
 
 ### Example 3: Distance Calculation
 ```bash
-$ python ~/.hermes/macau_bus_info.py --route 51A --from-stop M93 --to-stop T394
+$ python macau_bus_info.py --route 51A --from-stop M93 --to-stop T394
 ```
 Output:
 - From: M93 (海擎天總站)
@@ -144,7 +144,7 @@ Output:
 
 ## 📂 Installed Location
 
-`~/.hermes/macau_bus_info.py`
+`~/macau-bus/macau_bus_info.py`
 
 ## 💡 Tips
 
