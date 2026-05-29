@@ -284,6 +284,12 @@ Nearest: 2 stops (0.8km, 2m)
 Next: 4 stops (2.2km, 5m)
 ```
 
+### Real-World Example
+
+Here's a photo of the Quote/0 mounted on the wall showing live bus data:
+
+![Quote/0 displaying bus data](docs/quote0_output_example.jpg)
+
 The footer shows the timestamp in `D Mon YYYY HH:MM` format.
 
 ### How It Works
