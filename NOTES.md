@@ -83,3 +83,15 @@ via Overpass API. Used to correctly route buses across the channel.
 - motransportinfo.com layout can change — if scraping breaks, inspect the
   Playwright screenshot at /tmp/mini-macau/playwright_screenshot.png.
 - Bridge route assignments are hand-maintained based on actual Macau bus operations.
+
+## Quote/0 Integration
+
+The `quote0_send_bus.py` script sends live bus data to a Quote/0 e-ink display
+(Dot. mindreset.tech). See `README.md` for full usage.
+
+Requirements:
+- `QUOTE0_DEVICE_ID` and `QUOTE0_API_KEY` in `~/.hermes/.env`
+- System cron running `quote0_send_bus.py --silent` every 5 minutes
+
+The script uses real stop coordinates from `stops.json` to calculate actual
+distance (km) and ETA (minutes) from your position to each bus, not just stop counts.

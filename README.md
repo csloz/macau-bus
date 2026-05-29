@@ -228,6 +228,80 @@ Use `macau_bus_quick.py` when you want a bare-minimum answer:
 - Quick check without full table or colors
 - Easy to paste into messages or summaries
 
+## 📟 Quote/0 E-Ink Display (`quote0_send_bus.py`)
+
+Sends live bus arrival data to a **Quote/0** (Dot. mindreset.tech) e-ink display,
+with real distance-based ETA from stop coordinates.
+
+### Usage
+
+Default (51A at T394):
+```bash
+python ~/macau-bus/quote0_send_bus.py
+```
+
+Custom route + stop:
+```bash
+python ~/macau-bus/quote0_send_bus.py 72 M93
+```
+
+Silent mode (no CLI output, for cron jobs):
+```bash
+python ~/macau-bus/quote0_send_bus.py --silent
+```
+
+Show help:
+```bash
+python ~/macau-bus/quote0_send_bus.py -h
+```
+
+### Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `route` | Bus route (e.g., 51A, 72, 701X) | `51A` |
+| `stop` | Stop ID (e.g., T394, M93) | `T394` |
+| `--silent` | No CLI output (for cron) | off |
+| `-h` | Show help message | — |
+
+### Environment Variables
+
+Set in `~/.hermes/.env`:
+- `QUOTE0_DEVICE_ID` — Quote/0 device serial (e.g., `48F6EE5476A8`)
+- `QUOTE0_API_KEY` — Dot. API key
+
+### Output Format
+
+The Quote/0 display shows:
+- **Title**: `{route} | {stop}` (e.g., `51A | T394`)
+- **Message**: Routes served, nearest bus (stops + distance + ETA), next bus
+
+Example display:
+```
+51A | T394
+Routes: 51A | 701X | 72
+Nearest: 2 stops (0.8km, 2m)
+Next: 4 stops (2.2km, 5m)
+```
+
+The footer shows the timestamp in `D Mon YYYY HH:MM` format.
+
+### How It Works
+
+1. Fetches live bus data from `macau_bus_arrivals.py --json-output`
+2. Looks up stop coordinates from `data/stops.json`
+3. Calculates real distance (km) and ETA (minutes) from your position to the bus using haversine formula
+4. Sends title + message + signature to Quote/0 via Dot. API
+
+### System Cron Setup
+
+Add to your crontab (`crontab -e`):
+```cron
+*/5 * * * * /usr/bin/python3 ~/macau-bus/quote0_send_bus.py --silent
+```
+
+This runs every 5 minutes with no CLI output.
+
 ## 🔄 Regenerating Reference Data
 
 To re-fetch bus stop sequences from the live DSAT API:
