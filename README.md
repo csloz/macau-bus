@@ -297,7 +297,25 @@ The footer shows the timestamp in `D Mon YYYY HH:MM` format.
 1. Fetches live bus data from `macau_bus_arrivals.py --json-output`
 2. Looks up stop coordinates from `data/stops.json`
 3. Calculates real distance (km) and ETA (minutes) from your position to the bus using haversine formula
-4. Sends title + message + signature to Quote/0 via Dot. API
+4. Fetches current weather from **Open-Meteo** (free, no API key) for Cotai
+5. Maps weather to a 40×40 PNG icon (sunny/cloudy/overcast/foggy/rainy/stormy)
+6. Sends title + message + signature + icon to Quote/0 via Dot. API
+
+### Weather Icons
+
+The script queries `api.open-meteo.com` for current conditions at Cotai (22.15°N, 113.56°E) and maps WMO weather codes to icons:
+
+| Weather Code | Condition | Icon |
+|-------------|-----------|------|
+| 0 | Clear sky | ☀️ sunny.png |
+| 1-2 | Mainly clear / Partly cloudy | ☀️ sunny.png |
+| 3 | Overcast | ☁️ overcast.png |
+| 45, 48 | Fog / Depositing rime fog | 🌫️ foggy.png |
+| 51-67 | Drizzle / Rain | 🌧️ rainy.png |
+| 71-77 | Snowfall | 🌧️ rainy.png (fallback) |
+| 80-99 | Rain showers / Thunderstorm | ⛈️ stormy.png |
+
+Icons are stored in `images/weather_*.png` (40×40, black on white).
 
 ### System Cron Setup
 

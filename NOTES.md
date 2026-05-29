@@ -89,6 +89,14 @@ via Overpass API. Used to correctly route buses across the channel.
 The `quote0_send_bus.py` script sends live bus data to a Quote/0 e-ink display
 (Dot. mindreset.tech). See `README.md` for full usage.
 
+### Weather Integration
+
+The script also queries **Open-Meteo** (free, no API key) for current weather at Cotai:
+- Coordinates: 22.15°N, 113.56°E
+- WMO weather codes mapped to 40×40 PNG icons (sunny/cloudy/overcast/foggy/rainy/stormy)
+- Icons stored in `images/weather_*.png`
+- Icon displayed at bottom-left of Quote/0 display
+
 Requirements:
 - `QUOTE0_DEVICE_ID` and `QUOTE0_API_KEY` in `~/.hermes/.env`
 - System cron running `quote0_send_bus.py --silent` every 5 minutes
