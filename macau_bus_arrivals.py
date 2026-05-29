@@ -233,16 +233,14 @@ def estimate_arrivals_live(stop_id, stops_data, routes_data, live_fetcher):
 
         svc = routes_data.get(route_id, {})
         avg_freq = svc.get("avg_freq", svc.get("headway", 10))
-
-        is_express = route_id in ["71S", "701X"]
-        route_color = C.ORANGE if is_express else C.BLUE
+        info_color = C.ORANGE if route_id in ["71S", "701X"] else C.BLUE
 
         arrivals[route_id] = {
             "stops": nearest_stops,
             "status": status,
             "direction": "→" if best_dir == 0 else "←",
-            "color": route_color,
             "frequency": int(avg_freq),
+            "color": info_color,
             "totalBuses": total_buses,
             "nearestPlate": nearest_plate,
             "nearestSpeed": nearest_speed,
@@ -326,6 +324,8 @@ def format_display(stop_id, chinese_name, english_name, arrivals, route_info):
         if info["stops"] is not None and info["stops"] != "?" and (
             info["stops"] == 0 or str(info["stops"]).startswith(("0", "1", "2", "3", "4"))
         ):
+            # Ensure color key exists with default value
+            info.setdefault("color", C.BLUE)
             plate = info.get("nearestPlate", "?")
             speed = info.get("nearestSpeed", 0)
             print(f"  {C.YELLOW}     Nearest: {plate} @ {speed} km/h{C.RESET}")
@@ -530,6 +530,10 @@ Examples:
     parser.add_argument("--simple", action="store_true",
                         help="Simple output: stop name, active routes, next arrivals")
 
+    # JSON output
+    parser.add_argument("--json-output", action="store_true",
+                        help="Output live arrivals as JSON (for API consumption)")
+
     # Distance
     parser.add_argument("--from-stop", dest="from_stop", help="Source stop for distance")
     parser.add_argument("--to-stop", dest="to_stop", help="Destination stop for distance")
@@ -538,12 +542,6 @@ Examples:
                         help="Path to cached reference data")
 
     args = parser.parse_args()
-
-    # Normalize user input to uppercase (data keys are uppercase)
-    args.route = (args.route or "").upper()
-    args.stop = (args.stop or "").upper()
-    args.from_stop = (args.from_stop or "").upper()
-    args.to_stop = (args.to_stop or "").upper()
 
     data_dir = Path(args.data_dir)
 
@@ -586,6 +584,33 @@ Examples:
 
         if args.simple:
             format_simple(args.stop, chinese_name, english_name, arrivals)
+        elif args.json_output:
+            # JSON output for API consumption
+            output = {
+                "stopId": args.stop,
+                "chineseName": chinese_name,
+                "englishName": english_name,
+                "timestamp": datetime.now().strftime("%H:%M"),
+                "routes": {},
+            }
+            for route_id in sorted(arrivals):
+                info = arrivals[route_id]
+                output["routes"][route_id] = {
+                    "stops": info["stops"],
+                    "status": info["status"],
+                    "direction": info["direction"],
+                    "frequency": info["frequency"],
+                    "totalBuses": info["totalBuses"],
+                    "lastUpdate": info["lastUpdate"],
+                }
+                if info.get("nearestPlate"):
+                    output["routes"][route_id]["nearestPlate"] = info["nearestPlate"]
+                    output["routes"][route_id]["nearestSpeed"] = info["nearestSpeed"]
+                if info.get("secondNearestStops") is not None:
+                    output["routes"][route_id]["secondNearestStops"] = info["secondNearestStops"]
+                    output["routes"][route_id]["secondNearestPlate"] = info.get("secondNearestPlate", "?")
+                    output["routes"][route_id]["secondNearestSpeed"] = info.get("secondNearestSpeed", 0)
+            print(json.dumps(output, ensure_ascii=False))
         else:
             format_display(args.stop, chinese_name, english_name, arrivals, route_info)
     else:

@@ -131,6 +131,7 @@ Output:
 | `--simple` | | Simple output format for live arrivals |
 | `--from-stop` | | Source stop for distance calculation |
 | `--to-stop` | | Destination stop for distance calculation |
+| `--json-output` | | Output results as a JSON string for parsing |
 
 ### What Each Output Shows
 
