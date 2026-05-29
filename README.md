@@ -121,6 +121,38 @@ Output:
   Transit: ~53 stops
 ```
 
+### JSON Output (programmatic consumption)
+
+```bash
+python ~/macau-bus/macau_bus_arrivals.py --stop T394 --json-output
+```
+
+Returns structured JSON with all routes serving the stop:
+
+```json
+{
+  "stopId": "T394",
+  "chineseName": "新城大馬路／威尼斯人",
+  "englishName": "AV. CIDADE NOVA/ VENETIAN",
+  "timestamp": "16:53",
+  "routes": {
+    "51A→": {
+      "stops": 1,
+      "status": "active",
+      "direction": "→",
+      "frequency": 8,
+      "totalBuses": 6,
+      "lastUpdate": "2026-05-12T08:53:00+08:00",
+      "nearestPlate": "AA6848",
+      "nearestSpeed": 45,
+      "secondNearestStops": 6,
+      "secondNearestPlate": "AA7167",
+      "secondNearestSpeed": 18
+    }
+  }
+}
+```
+
 ### Full Flag Reference
 
 | Flag | Short | Description |
@@ -129,9 +161,9 @@ Output:
 | `--stop` | `-s` | Stop ID for live arrivals (e.g. T394, M1) |
 | `--stops` | `-S` | List all stops (Chinese + English + coords) |
 | `--simple` | | Simple output format for live arrivals |
+| `--json-output` | | Output results as a JSON string for parsing |
 | `--from-stop` | | Source stop for distance calculation |
 | `--to-stop` | | Destination stop for distance calculation |
-| `--json-output` | | Output results as a JSON string for parsing |
 
 ### What Each Output Shows
 
